@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:talisman/Player.dart';
+import 'dart:math';
 
 class Grid extends StatelessWidget {
-  const Grid({super.key});
+  final List<Color> palette;
+  const Grid({super.key, required this.palette});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +14,9 @@ class Grid extends StatelessWidget {
     
     final itemHeight = (size.height - kToolbarHeight + padding) / 2;
     final itemWidth = (size.width - (padding * 2) - spacing) / 2;
+
+    // Colors
+    List<Color> mutablePalette = List.from(palette);
 
     return GridView.builder(
       padding: EdgeInsets.all(padding),
@@ -23,7 +28,12 @@ class Grid extends StatelessWidget {
       ),
       itemCount: 4, // Number of Player widgets
       itemBuilder: (context, index) {
-        return const Player();
+        
+        final randomIndex = Random().nextInt(mutablePalette.length);
+        final randomColor = mutablePalette[randomIndex];
+        mutablePalette.removeAt(randomIndex);
+
+        return Player(color: randomColor);
       },
     );
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Player extends StatefulWidget {
-  const Player({super.key});
+  final Color color;
+  const Player({super.key, required this.color});
 
   @override
   _PlayerState createState() => _PlayerState();
@@ -39,10 +40,11 @@ class _PlayerState extends State<Player> {
             } else {
               _increment();
             }
+            if (_life < 0) _life = 0;
           },
           child: Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 68, 137, 255),
+              color: widget.color,
               borderRadius: BorderRadius.circular(16.0), // Rounded corners
             ),
             child: Center(
