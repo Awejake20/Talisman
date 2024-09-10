@@ -16,13 +16,11 @@ class MenuButton extends StatelessWidget {
           color: const Color.fromARGB(255, 60, 60, 60), // Button color
           shape: BoxShape.circle, // Makes the button circular
         ),
-        child: Center(
-          child: Text(
-            'Menu',
-            style: TextStyle(
-              fontSize: 20, 
-              color: Colors.white,
-            ),
+        child: const Center(
+          child: Icon(
+            Icons.menu,
+            size: 80.0, // Size of the icon
+            color: Colors.white, // Icon color
           ),
         ),
       ),
